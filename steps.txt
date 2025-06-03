@@ -30,6 +30,7 @@
 #client
 1. frontend setup
 
-
+2. actions and reducers for redux 
+3. created form
 
 
