@@ -17,5 +17,13 @@
     -import all these in index.js
     -update package.json
 
+# Mongodb connection
+1. in server folder
+    -add mongo connection in index.js
+2. add routes folder in server
+3. add controllers in server to handle routes
+4. add models in server 
+
+
 
 
