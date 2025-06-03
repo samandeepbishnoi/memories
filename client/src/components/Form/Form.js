@@ -23,16 +23,26 @@ const Form = ({currentId , setCurrentId}) => {
         if (post) setPostData(post);
     }, [post]);
     
+    const clear = () => {
+      setCurrentId(0);
+      setPostData({
+        title: "",
+        message: "",
+        tags: "",
+        selectedFile: "",
+      });
+    };
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         if (currentId) {
             dispatch(updatePost(currentId, postData));
+            clear();
         } else {
         dispatch(createPost(postData));
+        clear();
         }
     }
-    const clear = () => {}
-
     const classes = useStyles();
 
     const dispatch = useDispatch();
@@ -47,7 +57,7 @@ const Form = ({currentId , setCurrentId}) => {
         onSubmit={handleSubmit}
       >
         <Typography variant="h6">
-          "Creating a Memory"
+          {currentId?'Editing':'Creating'} a Memory
         </Typography>
         <TextField
           name="title"
