@@ -15,13 +15,17 @@ const Form = () => {
     message: "",
     tags: "",
     selectedFile: "",
-  });
+    });
 
-  const handleSubmit = (e) => {}
-  const clear = () => {}
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        dispatch(createPost(postData));
+    }
+    const clear = () => {}
 
     const classes = useStyles();
 
+    const dispatch = useDispatch();
 
 
     return (
