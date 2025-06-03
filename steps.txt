@@ -1,0 +1,21 @@
+#Setup
+
+1. create client and server folder
+
+2. in client folder
+    -npx create-react-app ./ 
+    -npm install --legacy-peer-deps >used same package.json for cliet and by this command no more dependencies needed for client
+    -create index.js ,App.js in src folder
+    -run client using NODE_OPTIONS=--openssl-legacy-provider npm start
+
+
+
+3. in sever folder
+    -create index.js
+    -npm init -y in terminal > gives empty package.json
+    -npm install body-parser cors express mongoose nodemon
+    -import all these in index.js
+    -update package.json
+
+
+
