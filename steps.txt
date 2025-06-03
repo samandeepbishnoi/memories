@@ -6,6 +6,7 @@
     -npx create-react-app ./ 
     -npm install --legacy-peer-deps >used same package.json for cliet and by this command no more dependencies needed for client
     -create index.js ,App.js in src folder
+    -npm install @material-ui/core
     -run client using NODE_OPTIONS=--openssl-legacy-provider npm start
 
 
@@ -20,9 +21,14 @@
 # Mongodb connection
 1. in server folder
     -add mongo connection in index.js
-2. add routes folder in server
-3. add controllers in server to handle routes
-4. add models in server 
+
+#handleing post
+1. add routes folder in server
+2. add controllers in server to handle routes
+3. add models in server 
+
+#client
+1. frontend setup
 
 
 
