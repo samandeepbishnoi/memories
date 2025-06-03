@@ -9,17 +9,27 @@ import FileBase from 'react-file-base64';
 import useStyles from "./styles.js";
 import { useNavigate } from 'react-router-dom';
 
-const Form = () => {
+const Form = ({currentId , setCurrentId}) => {
     const [postData, setPostData] = useState({
-    title: "",
-    message: "",
-    tags: "",
-    selectedFile: "",
+      title: "",
+      message: "",
+      tags: "",
+      selectedFile: "",
     });
+  
+    const  post  = useSelector((state) => currentId ? state.posts.find((p) => p._id === currentId) : null);
 
+    useEffect(() => {
+        if (post) setPostData(post);
+    }, [post]);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
+        } else {
         dispatch(createPost(postData));
+        }
     }
     const clear = () => {}
 
