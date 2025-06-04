@@ -32,20 +32,31 @@ const Form = ({currentId , setCurrentId}) => {
         selectedFile: "",
       });
     };
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (currentId) {
-            dispatch(updatePost(currentId, postData));
-            clear();
-        } else {
-        dispatch(createPost(postData));
-        clear();
-        }
-    }
-    const classes = useStyles();
+    const user = JSON.parse(localStorage.getItem('profile'));
+    const navigate = useNavigate();
 
+    const handleSubmit = async(e) => {
+    e.preventDefault();
+    if (!currentId ) {
+      dispatch(createPost({ ...postData, name: user?.result?.name}, navigate));
+      clear();
+    }else{
+      dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
+      clear();
+    }
+  };
+    const classes = useStyles();
     const dispatch = useDispatch();
+
+    if (!user?.result?.name) {
+    return(
+      <Paper className={classes.paper}>
+          <Typography variant="h6" align="center">
+              Please Sign In to create your own memories and like other's memories!
+          </Typography>
+      </Paper>
+    )
+  }
 
 
     return (
