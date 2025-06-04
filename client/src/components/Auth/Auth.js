@@ -26,6 +26,8 @@ const initialState = {
 
 const Auth = () => {
   const classes = makeStyles();
+  const dispatch = useDispatch();
+  const history = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState(initialState);
@@ -42,12 +44,11 @@ const Auth = () => {
     } else {
       dispatch(signin(formData, history));
     }
+    console.log(formData);
   };
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  const dispatch = useDispatch();
-  const history = useNavigate();
   const onSuccess = (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
