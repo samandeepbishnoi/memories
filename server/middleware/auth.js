@@ -2,7 +2,13 @@ import jwt from 'jsonwebtoken';
 
 const auth = async (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(" ")[1];
+        const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({ message: "Authorization header missing or invalid" });
+    }
+
+        const token = authHeader.split(" ")[1];
         const isCustomAuth = token.length < 500;
         let decodedData;
         if(token && isCustomAuth){
