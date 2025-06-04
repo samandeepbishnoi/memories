@@ -64,6 +64,7 @@ const Form = ({currentId , setCurrentId}) => {
           variant="outlined"
           label="Title"
           fullWidth
+          required
           value={postData.title}
           onChange={(e) => setPostData({ ...postData, title: e.target.value })}
         />
