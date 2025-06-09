@@ -9,9 +9,9 @@ const Paginate = ({ page }) => {
   const classes = useStyles();
   const { numberOfPages } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
-  useEffect(() => {
-       if(page) dispatch(getPosts(page));
-     },[dispatch, page]);
+  // useEffect(() => {
+  //      if(page) dispatch(getPosts(page));
+  //    },[dispatch, page]);
   return (
     <Pagination
       classes={{ ul: classes.ul }}
