@@ -15,7 +15,7 @@ import Form from "../Form/Form";
 import useStyles from "./styles";
 import Paginate from "../Pagination";
 import { useNavigate, useLocation } from "react-router-dom";
-import ChipInput from "material-ui-chip-input";
+import CustomChipInput from "./CustomChipInput";
 
 function useQuery() {
   return new URLSearchParams(useLocation().search);
@@ -46,12 +46,12 @@ const Home = () => {
     } else {
       history("/");
     }
-  }; 
+  };
   useEffect(() => {
-  if (!searchQuery) {
-    dispatch(getPosts(page));
-  }
-}, [currentId, dispatch, page, searchQuery]);
+    if (!searchQuery) {
+      dispatch(getPosts(page));
+    }
+  }, [currentId, dispatch, page, searchQuery]);
 
 
   const handleKeyPress = (e) => {
@@ -60,7 +60,7 @@ const Home = () => {
     }
   };
   const [tags, setTags] = useState([]);
- const handleAdd = (tag) => setTags([...tags, tag]);
+  const handleAdd = (tag) => setTags([...tags, tag]);
   const handleDelete = (tagToDelete) =>
     setTags(tags.filter((tag) => tag !== tagToDelete));
 
@@ -92,14 +92,13 @@ const Home = () => {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <ChipInput
-                style={{ margin: "10px 0" }}
+              <CustomChipInput
                 value={tags}
                 onAdd={handleAdd}
                 onDelete={handleDelete}
                 label="Search Tags"
-                variant="outlined"
               />
+
               <Button
                 onClick={searchPost}
                 className={classes.searchButton}
@@ -110,7 +109,7 @@ const Home = () => {
               </Button>
             </AppBar>
             <Form currentId={currentId} setCurrentId={setCurrentId} />
-            
+
             {!searchQuery && !tags.length && (
               <Paper elevation={6} className={classes.pagination}>
                 <Paginate page={page} />
